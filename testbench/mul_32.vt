@@ -1,0 +1,67 @@
+// Copyright (C) 1991-2013 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench template that is freely editable to  
+// suit user's needs .Comments are provided in each section to help the user    
+// fill out necessary details.                                                  
+// *****************************************************************************
+// Generated on "11/11/2021 20:03:58"
+                                                                                
+// Verilog Test Bench template for design : mul_32
+// 
+// Simulation tool : ModelSim (Verilog)
+// 
+
+`timescale 1 ps/ 1 ps
+module mul_32_vlg_tst();
+// constants                                           
+// general purpose registers
+reg eachvec;
+// test vector input registers
+reg [31:0] A;
+reg [31:0] B;
+reg clk;
+reg reset;
+// wires                                          
+wire [63:0]  C;  
+integer CC;           
+mul_32 i1 ( 
+	.A_in(A),
+	.B_in(B),
+	.C(C),
+	.clk(clk),
+	.reset(reset)
+);
+initial                                                
+begin                                               
+clk=0;
+reset=0;
+A=0;
+B=0;
+#50
+reset=1;                                               
+$display("Running testbench");                       
+end                                                    
+always                                       
+begin                                      
+#10
+clk = ~clk;                                            
+end  
+always@(posedge clk)begin
+A<=$random;
+B<=$random;
+end                                     
+endmodule
+
